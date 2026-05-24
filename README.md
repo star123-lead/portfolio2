@@ -30,4 +30,4 @@
 - **GitHub:** [star123-lead](https://github.com/star123-lead)
 - **Direct Mail:** star.err404@gmail.com
 - **Phone / WhatsApp:** +91 9342083910
-- **Instagram:** @star.vc_9# portfolio2
+- **Instagram:** @star.vc_9
