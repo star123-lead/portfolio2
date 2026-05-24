@@ -1,3 +1,41 @@
+# star.err404 — Professional Portfolio
+
+A high-fidelity, visually stunning, dark glassmorphic portfolio designed to showcase dual-focus capabilities in **Web Development** and **Cybersecurity**. Fully responsive, heavily optimized for mobile devices, and designed to load out-of-the-box on GitHub Pages.
+
+Live Preview: `https://<your-username>.github.io/<repository-name>/` (once hosted on GitHub Pages)
+
+---
+
+## ⚡ Core Features
+
+- **Premium Glassmorphic UI:** Soft dark frosted-panels built on custom gold-circuitry ambient tech backgrounds, with heavy backdrop blurs (`backdrop-filter`) keeping text contrast extremely readable.
+* **Typographical Elegance:** Standardized on geometric modern tech fonts:
+  - `Plus Jakarta Sans` for high-weight display headings.
+  - `Inter` for highly readable body paragraphs.
+  - `JetBrains Mono` for developer metadata tags, numbers, and system accents.
+* **Premium Micro-Animations:**
+  - Fast fade-down navigation bar slide-in on page load.
+  - Smooth parallax image offset frame translates on hover.
+  - Vercel-style sweeping button highlight transitions.
+  - Staggered scrolling reveals using high-performance cubic-bezier easing (`cubic-bezier(0.16, 1, 0.3, 1)`).
+  - Scroll-triggered dynamic numbers count-up observer for academic and project statistics.
+* **Interactive Profile Picture Toggle:** Defaults to a clean professional portrait. Clicking/touching the portrait instantly toggles to an alternate picture dynamically without loading lags.
+* **Dynamic Skill Exploration Modal:** Clickable technology chips that open a frosted-glass popup modal listing specific project experiences and descriptions.
+* **Interactive Contact Hub:** Toggles between active professional links (LinkedIn, GitHub), direct communication lines (Email, Phone/WhatsApp), and informal handles (Instagram). Features single-click copy buttons and dynamic toast overlays.
+
+---
+
+## 📁 Repository Structure
+
+All assets are completely self-contained in this folder for direct hosting:
+```
+├── index.html          # Main HTML entry point (duplicated as portfolio.html for convenience)
+├── background.png      # Gold-circuited abstract tech background image
+├── profile.jpg         # Default professional profile portrait
+├── profile2.jpg        # Alternate interactive portrait
+├── Resume2.pdf          # CV / Resume PDF download
+└── README.md           # This repository guide
+```
 
 ---
 
