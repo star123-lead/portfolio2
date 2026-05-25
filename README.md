@@ -64,9 +64,6 @@ The portfolio showcases featured projects, technical skills, and contact channel
 portfolio/
 │
 ├── index.html          # Main HTML file (single-page)
-├── style.css           # All CSS styles (or embedded in index.html)
-├── script.js           # All JS logic (or embedded in index.html)
-│
 ├── favicon.png         # Brand logo / favicon
 ├── background.png      # Circuit board background texture
 ├── profile.jpg         # Primary profile photo
