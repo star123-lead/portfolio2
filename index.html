@@ -284,19 +284,41 @@
       z-index: 110;
     }
 
+    /* ── PURE CSS CONTINUOUS MORPHING FAVICON LOGO ENGINE ── */
     .nav-logo-img {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       object-fit: contain;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      border: 1px solid var(--gold);
+      background: var(--toggle-bg);
+      box-shadow: 0 0 10px rgba(201, 168, 76, 0.1);
       cursor: pointer;
+      will-change: border-radius, transform;
+      animation: logoMorphInfiniteLoop 12s ease-in-out infinite, logoSpinRotate 20s linear infinite;
     }
     
+    @keyframes logoMorphInfiniteLoop {
+      0%, 100% {
+        border-radius: 50%; /* Shape 1: Pristine Smooth Circle */
+      }
+      25% {
+        border-radius: 4px; /* Shape 2: Industrial Circuit Block */
+      }
+      50% {
+        border-radius: 50% 50% 10% 10%; /* Shape 3: Armored Security Shield */
+      }
+      75% {
+        border-radius: 14px 4px 14px 4px; /* Shape 4: Code Bracket Profile Matrix */
+      }
+    }
+
+    @keyframes logoSpinRotate {
+      100% { transform: rotate(360deg); }
+    }
+
     .nav-logo-img:hover {
-      transform: rotate(360deg);
-      box-shadow: 0 0 12px var(--gold);
+      box-shadow: 0 0 15px var(--gold);
+      animation-play-state: paused; /* Freeze shape parameters cleanly on mouse cursor hover */
     }
 
     .nav-right {
@@ -487,7 +509,7 @@
     .btn-ghost:hover { 
       border-color: var(--gold-dim); 
       color: var(--gold);
-      background: rgba(201, 168, 76, 0.05);
+      background: rgba(201,168,76,0.05);
       transform: translateY(-2px);
     }
 
@@ -918,7 +940,7 @@
       background: var(--gold);
       border-color: var(--gold);
       color: var(--bg);
-      box-shadow: 0 10px 24 rgba(201, 168, 76, 0.2);
+      box-shadow: 0 10px 24px rgba(201, 168, 76, 0.2);
     }
 
     .contact-toggle-btn.active svg { transform: scale(1.1); }
@@ -981,7 +1003,7 @@
       font-size: 0.9rem;
       color: var(--muted);
       max-width: 450px;
-      margin-bottom: 1.5rem;
+      margin-width: 1.5rem;
       line-height: 1.6;
     }
 
@@ -1040,29 +1062,20 @@
       letter-spacing: 0.1em;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
+    /* ── RESTORED CSS ANIMATIONS FOR THE OBSERVERS ── */
     .reveal {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
-                  transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: transform, opacity;
     }
+    
+    /* This rule connects the HTML opacity loop back together perfectly */
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Responsive Mobile Layout Adjustments */
     @media (max-width: 768px) {
       nav { padding: 1.2rem 2rem; }
       
@@ -1105,7 +1118,7 @@
       section { padding: 4rem 2rem; }
       .about-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
-      .story-hud-container { display: none; } /* Hide telemetry HUD on small viewports for spacing */
+      .story-hud-container { display: none; }
     }
   </style>
 </head>
@@ -1408,8 +1421,6 @@
       ripple.style.left = `${e.clientX}px`;
       ripple.style.top = `${e.clientY}px`;
       document.body.appendChild(ripple);
-      
-      // Clean up DOM node once animation ends
       setTimeout(() => { ripple.remove(); }, 750);
     });
 
@@ -1429,7 +1440,6 @@
         const el = document.getElementById(node.id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          // Target node closest to the center viewport view
           if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
             activeText = node.text;
           }
@@ -1709,7 +1719,7 @@
       });
     }
 
-    // Unified Scroll Progression Counter Observer
+    // Unified Scroll Progression Counter Observer Engine
     const counters = document.querySelectorAll('.count-up');
     const targetsToObserve = document.querySelectorAll('#about, .project-card');
 
