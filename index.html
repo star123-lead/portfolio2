@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Thangamani Palanivel (Star) | Full Stack Developer Portfolio</title>
-  <meta name="description" content="Official portfolio of Thangamani Palanivel (Star), a Full Stack Developer, Frontend UI specialist, and cybersecurity enthusiast from Namakkal, Tamil Nadu. Graduating in 2027. Explore interactive React applications, Python automation tools, and native Android utilities.">
-  <meta name="keywords" content="Thangamani Palanivel, Thangamani P, Star, Thangamani Palanivel Star, Full Stack Developer, UI UX Designer, Frontend Developer Namakkal, Cybersecurity, React Developer, Android Developer, Portfolio Tamil Nadu, Graduating 2027">
+  <meta name="description" content="Official portfolio of Thangamani Palanivel (Star), a Full Stack Developer, Frontend UI specialist, and cybersecurity enthusiast from Namakkal, Tamil Nadu. BCA Final Year Student. Explore interactive React applications, Python automation tools, and native Android utilities.">
+  <meta name="keywords" content="Thangamani Palanivel, Thangamani P, Star, Thangamani Palanivel Star, Full Stack Developer, UI UX Designer, Frontend Developer Namakkal, Cybersecurity, React Developer, Android Developer, Portfolio Tamil Nadu, BCA Final Year">
   <meta name="author" content="Thangamani Palanivel">
   <meta name="robots" content="index, follow">
 
   <meta property="og:title" content="Thangamani Palanivel (Star) | Full Stack Developer Portfolio" />
-  <meta property="og:description" content="Portfolio of Thangamani Palanivel (Star). Graduating in 2027. Discover full-stack web applications, interactive frontends, and custom cybersecurity tools." />
+  <meta property="og:description" content="Portfolio of Thangamani Palanivel (Star). BCA Final Year Student. Discover full-stack web applications, interactive frontends, and custom cybersecurity tools." />
   <meta property="og:image" content="https://portfolio-star-lead.vercel.app/preview.png" />
   <meta property="og:url" content="https://portfolio-star-lead.vercel.app/" />
   <meta property="og:type" content="website" />
@@ -19,7 +19,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Thangamani Palanivel (Star) Portfolio">
-  <meta name="twitter:description" content="Frontend Developer & Cybersecurity enthusiast based in Tamil Nadu. Graduating in 2027.">
+  <meta name="twitter:description" content="Frontend Developer & Cybersecurity enthusiast based in Tamil Nadu. BCA Final Year Student.">
   <meta name="twitter:image" content="https://portfolio-star-lead.vercel.app/preview.png">
 
   <link rel="canonical" href="https://portfolio-star-lead.vercel.app/">
@@ -57,7 +57,9 @@
   </script>
 
   <style>
+    /* ── DUAL VARIABLE SYSTEM ── */
     :root {
+      /* Dark Theme Root Setup (Default) */
       --bg: #0e0c0a;
       --surface: #161310;
       --card: #1c1915;
@@ -68,6 +70,22 @@
       --muted: #8a8070;
       --accent: #e05c3a;
       --border: rgba(201,168,76,0.15);
+      --toggle-bg: #1c1915;
+    }
+
+    [data-theme="light"] {
+      /* Light Theme Overrides */
+      --bg: #fdfcfb;
+      --surface: #f5f2ee;
+      --card: #eae5df;
+      --gold: #aa842c;
+      --gold-light: #c9a84c;
+      --gold-dim: #614a14;
+      --text: #1c1915;
+      --muted: #6e6455;
+      --accent: #c44321;
+      --border: rgba(170,132,44,0.2);
+      --toggle-bg: #eae5df;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -83,6 +101,14 @@
       font-weight: 300;
       line-height: 1.7;
       overflow-x: hidden;
+      transition: color 0.4s ease;
+    }
+
+    /* Light Theme Adaptive Background Filter adjustment */
+    [data-theme="light"] body {
+      background: linear-gradient(rgba(253, 252, 251, 0.9), rgba(253, 252, 251, 0.94)), 
+                  url('background.png') no-repeat center center fixed;
+      background-size: cover;
     }
 
     /* ── GRAIN OVERLAY ── */
@@ -101,7 +127,7 @@
       position: fixed; top: 0; left: 0; right: 0;
       display: flex; justify-content: space-between; align-items: center;
       padding: 1.4rem 4rem;
-      background: linear-gradient(to bottom, rgba(14,12,10,0.95), transparent);
+      background: linear-gradient(to bottom, var(--bg), transparent);
       z-index: 100;
       backdrop-filter: blur(6px);
       opacity: 0;
@@ -113,12 +139,33 @@
       to   { transform: translateY(0); opacity: 1; }
     }
 
+    .nav-brand-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-logo-img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
     .nav-logo {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.2rem;
       color: var(--gold);
       letter-spacing: 0.08em;
       text-decoration: none;
+      font-weight: 700;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
     }
 
     .nav-links { display: flex; gap: 2.4rem; list-style: none; }
@@ -146,6 +193,31 @@
     .nav-links a:hover::after {
       transform: scaleX(1);
       transform-origin: left;
+    }
+
+    /* Modern Theme Switcher Styles */
+    .theme-toggle-btn {
+      background: var(--toggle-bg);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      padding: 0.5rem;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      transition: all 0.3s ease;
+    }
+    .theme-toggle-btn:hover {
+      transform: scale(1.05);
+      border-color: var(--gold);
+    }
+    .theme-toggle-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
     }
 
     /* ── HERO ── */
@@ -845,6 +917,7 @@
     @media (max-width: 768px) {
       nav { padding: 1.2rem 2rem; }
       .nav-links { display: none; }
+      .nav-right { gap: 1.5rem; }
       #hero { grid-template-columns: 1fr; padding: 6rem 2rem 3rem; text-align: center; }
       .hero-sub { margin: 0 auto 2rem; }
       .hero-cta { justify-content: center; }
@@ -860,13 +933,22 @@
 
   <header>
     <nav aria-label="Main Navigation">
-      <a href="#hero" class="nav-logo" aria-label="Thangamani Palanivel Home Portfolio">Star</a>
-      <ul class="nav-links">
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <div class="nav-brand-container">
+        <img class="nav-logo-img" src="favicon.png" alt="Star Logo Badge" aria-hidden="true" />
+        <a href="#hero" class="nav-logo" aria-label="Thangamani Palanivel Home Portfolio">Star</a>
+      </div>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle-btn" id="theme-switcher-element" title="Toggle System Color Scheme" aria-label="Toggle Color Theme Mode">
+          <svg id="theme-icon-sun" class="theme-icon" style="display:none;" viewBox="0 0 20 20"><path d="M10 15a5 5 0 110-10 5 5 0 010 10zm0-1.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0-9a.75.75 0 01-.75-.75V1.5a.75.75 0 011.5 0v2.25A.75.75 0 0110 4.5zm0 11a.75.75 0 01-.75.75v2.25a.75.75 0 011.5 0V16.25a.75.75 0 01-.75-.75zM4.5 10a.75.75 0 01-.75.75H1.5a.75.75 0 010-1.5h2.25A.75.75 0 014.5 10zm14 0a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM6.11 6.11a.75.75 0 010 1.06l-1.59 1.59a.75.75 0 11-1.06-1.06l1.59-1.59a.75.75 0 011.06 0zm11.37 11.38a.75.75 0 010 1.06l-1.59 1.59a.75.75 0 11-1.06-1.06l1.59-1.59a.75.75 0 011.06 0zm-11.37 0a.75.75 0 01-1.06 0l-1.59-1.59a.75.75 0 111.06-1.06l1.59 1.59a.75.75 0 010 1.06zm11.37-11.38a.75.75 0 01-1.06 0l-1.59-1.59a.75.75 0 011.06-1.06l1.59 1.59a.75.75 0 010 1.06z"/></svg>
+          <svg id="theme-icon-moon" class="theme-icon" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+        </button>
+      </div>
     </nav>
   </header>
 
@@ -876,7 +958,7 @@
       <div class="hero-bg-line" aria-hidden="true"></div>
 
       <div class="hero-text">
-        <p class="hero-tag">// Graduating on 2027</p>
+        <p class="hero-tag">// BCA Final Year Student</p>
         <h1 class="hero-name">
           Thangamani<br /><span>Palanivel</span>
         </h1>
@@ -971,7 +1053,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal" onclick="window.open('https://star-project-gym.vercel.app/', '_blank')" style="cursor: pointer;" role="link" tabIndex="0" aria-label="View Star City Fitness Gym Website project">
+        <article class="project-card reveal" onclick="window.open('https://star-project-gym.vercel.app/', '_blank')", style="cursor: pointer;" role="link" tabIndex="0" aria-label="View Star City Fitness Gym Website project">
           <div class="project-num">05</div>
           <h3 class="project-title">Star City Fitness Gym Landing Page</h3>
           <p class="project-desc">High-converting business landing page structured for a fitness center in Namakkal, Tamil Nadu. Features deep responsiveness, class timeline boards, and modern lead funnels.</p>
@@ -1116,6 +1198,47 @@
   </footer>
 
   <script>
+    // ── THEME SWITCHER ENGINE ──
+    const themeToggleBtn = document.getElementById('theme-switcher-element');
+    const iconSun = document.getElementById('theme-icon-sun');
+    const iconMoon = document.getElementById('theme-icon-moon');
+
+    const updateThemeToggleUI = (activeTheme) => {
+      if (activeTheme === 'light') {
+        iconSun.style.display = 'block';
+        iconMoon.style.display = 'none';
+      } else {
+        iconSun.style.display = 'none';
+        iconMoon.style.display = 'block';
+      }
+    };
+
+    // Initialize scheme checking logic
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    let computedTheme = savedTheme || (systemPrefersLight ? 'light' : 'dark');
+
+    document.documentElement.setAttribute('data-theme', computedTheme);
+    updateThemeToggleUI(computedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const activeTheme = document.documentElement.getAttribute('data-theme');
+      const alternateTheme = activeTheme === 'light' ? 'dark' : 'light';
+      
+      document.documentElement.setAttribute('data-theme', alternateTheme);
+      localStorage.setItem('portfolio-theme', alternateTheme);
+      updateThemeToggleUI(alternateTheme);
+    });
+
+    // Listen for real-time operating system preference modifications
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+      if (!localStorage.getItem('portfolio-theme')) {
+        const platformTheme = e.matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', platformTheme);
+        updateThemeToggleUI(platformTheme);
+      }
+    });
+
     // Scroll reveal system
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver(entries => {
