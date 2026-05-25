@@ -15,70 +15,12 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <meta property="og:title" content="Thangamani Palanivel (Star) | Full Stack Developer Portfolio" />
-  <meta property="og:description" content="Portfolio of Thangamani Palanivel (Star). BCA Final Year Student. Discover full-stack web applications, interactive frontends, and custom cybersecurity tools." />
-  <meta property="og:image" content="https://starinulagam.vercel.app/preview.png" />
-  <meta property="og:image:alt" content="Thangamani Palanivel - Full Stack Developer Portfolio" />
-  <meta property="og:url" content="https://starinulagam.vercel.app/" />
-  <meta property="og:locale" content="en_IN" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Thangamani Palanivel Portfolio">
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Thangamani Palanivel (Star) Portfolio">
-  <meta name="twitter:description" content="Frontend Developer & Cybersecurity enthusiast based in Tamil Nadu. BCA Final Year Student.">
-  <meta name="twitter:image" content="https://starinulagam.vercel.app/preview.png">
-  <meta name="twitter:url" content="https://starinulagam.vercel.app/" />
-
-  <link rel="canonical" href="https://starinulagam.vercel.app/" />
-  <link rel="manifest" href="/site.webmanifest" />
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Thangamani Palanivel",
-    "alternateName": "Star",
-    "url": "https://starinulagam.vercel.app/",
-    "image": "https://starinulagam.vercel.app/preview.png",
-    "email": "star.err404@gmail.com",
-    "telephone": "+91-9342083910",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Namakkal",
-      "addressRegion": "Tamil Nadu",
-      "addressCountry": "India"
-    },
-    "jobTitle": "Full Stack Developer",
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "PGP College of Arts and Science"
-    },
-    "knowsAbout": ["Full Stack Development", "Frontend Development", "UI/UX Design", "React", "Cybersecurity", "Android Development", "Python"],
-    "sameAs": [
-      "https://github.com/star123-lead",
-      "https://www.linkedin.com/in/thangamani-p-b694953ba",
-      "https://instagram.com/star.vc_9"
-    ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Thangamani Palanivel Portfolio",
-    "url": "https://starinulagam.vercel.app/"
-  }
-  </script>
 
   <style>
     /* ── DUAL VARIABLE SYSTEM WITH CONTRAST CORRECTIONS ── */
@@ -141,14 +83,14 @@
       opacity: 0.5;
     }
 
-    /* ── GOLD SHOCKWAVE RIPPLE ── */
+    /* ── BUGFIX 1: GOLD SHOCKWAVE RIPPLE (Removed scale(0) so it actually shows) ── */
     .click-ripple {
       position: fixed;
       border: 2px solid var(--gold);
       background: rgba(201, 168, 76, 0.05);
       border-radius: 50%;
       pointer-events: none;
-      transform: translate(-50%, -50%) scale(0);
+      transform: translate(-50%, -50%); 
       animation: ripple-expansion 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
       z-index: 10005;
     }
@@ -520,7 +462,7 @@
       border-color: var(--gold);
       color: var(--gold);
       background: rgba(201,168,76,0.1);
-      transform: translateY(-2px);
+      transform: translateY(-2px) !important; /* Force override staggered position on hover */
       box-shadow: 0 4px 12px rgba(201,168,76,0.1);
     }
 
@@ -541,18 +483,12 @@
       filter: blur(0px) brightness(1);
     }
 
-    .skills-grid .skill-chip, 
-    .projects-grid .project-card {
+    /* BUGFIX 3: Removed the CSS rule that instantly revealed skill chips */
+    .skills-grid .skill-chip {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
                   transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal.visible .skill-chip,
-    .projects-grid .project-card.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     .modal-overlay {
@@ -781,14 +717,6 @@
     }
 
     .stat-num {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 2.4rem;
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 1;
-    }
-
-    .stat-box .stat-num {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 2.4rem;
       font-weight: 900;
@@ -1399,7 +1327,7 @@
       }
     });
 
-    // ── GOLD SHOCKWAVE RIPPLE LOGIC ──
+    // ── BUGFIX 1: GOLD SHOCKWAVE RIPPLE (Cleaned execution) ──
     window.addEventListener('click', (e) => {
       const ripple = document.createElement('span');
       ripple.className = 'click-ripple';
@@ -1411,9 +1339,10 @@
       });
     });
 
-    // ── DYNAMIC TAGLINE TYPING LOGIC ──
+    // ── BUGFIX 2: DYNAMIC TAGLINE TYPING LOGIC (Bypassed DOMContentLoaded wrapper) ──
     const runTaglineTypingEffect = () => {
       const targetElement = document.getElementById('text-target');
+      if (!targetElement) return; // Safety check
       const fullText = "BCA Final Year Student";
       let index = 0;
 
@@ -1426,9 +1355,9 @@
       }
       setTimeout(typeCharacter, 600);
     };
-    document.addEventListener('DOMContentLoaded', runTaglineTypingEffect);
+    runTaglineTypingEffect(); // Execute directly!
 
-    // ── UPGRADED COMPONENT ASSEMBLY OBSERVER ENGINE ──
+    // ── BUGFIX 3: UPGRADED COMPONENT ASSEMBLY (No CSS override) ──
     const reveals = document.querySelectorAll('.reveal, .project-card');
 
     const customAssemblyObserver = new IntersectionObserver(entries => {
