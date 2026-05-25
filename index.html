@@ -80,36 +80,6 @@
   }
   </script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://starinulagam.vercel.app/" },
-      { "@type": "ListItem", "position": 2, "name": "Skills",   "item": "https://starinulagam.vercel.app/#skills" },
-      { "@type": "ListItem", "position": 3, "name": "Projects", "item": "https://starinulagam.vercel.app/#projects" },
-      { "@type": "ListItem", "position": 4, "name": "Contact",  "item": "https://starinulagam.vercel.app/#contact" }
-    ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Featured Engineering Projects Portfolio",
-    "description": "A curated list of full stack applications, responsive web products, and cybersecurity testing software assets built by Thangamani Palanivel.",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "item": { "@type": "CreativeWork", "name": "Portfolio Website" } },
-      { "@type": "ListItem", "position": 2, "item": { "@type": "CreativeWork", "name": "PhishGuard – Phishing Awareness App" } },
-      { "@type": "ListItem", "position": 3, "item": { "@type": "CreativeWork", "name": "Encrypted File Password Cracker" } },
-      { "@type": "ListItem", "position": 4, "item": { "@type": "CreativeWork", "name": "Billing Software – Web-style UI" } },
-      { "@type": "ListItem", "position": 5, "item": { "@type": "CreativeWork", "name": "Star City Fitness Gym Landing Page" } },
-      { "@type": "ListItem", "position": 6, "item": { "@type": "CreativeWork", "name": "PROTECT ME - Emergency IoT Portal" } }
-    ]
-  }
-  </script>
-
   <style>
     /* ── DUAL VARIABLE SYSTEM WITH CONTRAST CORRECTIONS ── */
     :root {
@@ -124,8 +94,6 @@
       --accent: #e05c3a;
       --border: rgba(201,168,76,0.15);
       --toggle-bg: #1c1915;
-      --liquid-fluid: rgba(201, 168, 76, 0.04);
-      --ripple-color: rgba(201, 168, 76, 0.25);
     }
 
     [data-theme="light"] {
@@ -140,8 +108,6 @@
       --accent: #c44321;
       --border: rgba(138, 101, 26, 0.25);
       --toggle-bg: #eae5df;
-      --liquid-fluid: rgba(138, 101, 26, 0.03);
-      --ripple-color: rgba(138, 101, 26, 0.3);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -175,90 +141,38 @@
       opacity: 0.5;
     }
 
-    .top-progress-loader {
-      position: fixed;
-      top: 0; left: 0; height: 3px;
-      width: 0%;
-      background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
-      z-index: 10005;
-      transition: width 0.4s ease-out, opacity 0.4s ease;
-    }
-
-    /* ── INVISIBLE GOLD SHOCKWAVE RIPPLE CONTAINER ── */
-    .shockwave-ripple {
+    /* ── GOLD SHOCKWAVE RIPPLE ── */
+    .click-ripple {
       position: fixed;
       border: 2px solid var(--gold);
+      background: rgba(201, 168, 76, 0.05);
       border-radius: 50%;
       pointer-events: none;
       transform: translate(-50%, -50%) scale(0);
-      opacity: 1;
-      z-index: 9998;
-      will-change: transform, opacity;
-      box-shadow: 0 0 15px var(--gold), inset 0 0 15px var(--gold);
-      animation: rippleExpand 0.75s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+      animation: ripple-expansion 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+      z-index: 10005;
     }
-    @keyframes rippleExpand {
-      to {
-        transform: translate(-50%, -50%) scale(6);
+
+    @keyframes ripple-expansion {
+      0% {
+        width: 0;
+        height: 0;
+        opacity: 0.8;
+      }
+      100% {
+        width: 180px;
+        height: 180px;
         opacity: 0;
-        border-width: 0px;
       }
     }
 
-    /* ── CHARACTER REVEAL STORY OVERLAY HUD ── */
-    .story-hud-container {
-      position: fixed;
-      bottom: 2rem;
-      left: 2rem;
-      z-index: 99;
-      background: var(--toggle-bg);
-      border: 1px solid var(--border);
-      padding: 0.8rem 1.2rem;
-      border-radius: 4px;
-      backdrop-filter: blur(8px);
-      max-width: 320px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      transition: transform 0.4s ease, opacity 0.4s ease;
-      pointer-events: none;
-    }
-    .story-hud-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
+    /* ── TERMINAL CURSOR BLINK ── */
+    .terminal-cursor {
       color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 0.3rem;
+      animation: blink 0.8s infinite steps(2);
     }
-    .story-hud-text {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.82rem;
-      color: var(--text);
-      line-height: 1.4;
-    }
-
-    /* ── LIQUID FILL SECTIONS ENGINE ── */
-    .liquid-section-container {
-      position: relative;
-      overflow: hidden;
-    }
-    .liquid-section-container::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: 0; right: 0;
-      top: 100%;
-      background: linear-gradient(to top, var(--liquid-fluid), transparent);
-      border-top: 1px solid rgba(201, 168, 76, 0);
-      pointer-events: none;
-      z-index: 1;
-      transition: top 1.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 1.5s ease;
-    }
-    .liquid-section-container.liquid-filled::after {
-      top: 0%;
-      border-top-color: rgba(201, 168, 76, 0.15);
-    }
-    .liquid-section-container > * {
-      position: relative;
-      z-index: 2;
+    @keyframes blink {
+      to { opacity: 0; }
     }
 
     /* ── NAV HEADER ── */
@@ -284,41 +198,19 @@
       z-index: 110;
     }
 
-    /* ── PURE CSS CONTINUOUS MORPHING FAVICON LOGO ENGINE ── */
     .nav-logo-img {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       object-fit: contain;
-      border: 1px solid var(--gold);
-      background: var(--toggle-bg);
-      box-shadow: 0 0 10px rgba(201, 168, 76, 0.1);
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
       cursor: pointer;
-      will-change: border-radius, transform;
-      animation: logoMorphInfiniteLoop 12s ease-in-out infinite, logoSpinRotate 20s linear infinite;
     }
     
-    @keyframes logoMorphInfiniteLoop {
-      0%, 100% {
-        border-radius: 50%; /* Shape 1: Pristine Smooth Circle */
-      }
-      25% {
-        border-radius: 4px; /* Shape 2: Industrial Circuit Block */
-      }
-      50% {
-        border-radius: 50% 50% 10% 10%; /* Shape 3: Armored Security Shield */
-      }
-      75% {
-        border-radius: 14px 4px 14px 4px; /* Shape 4: Code Bracket Profile Matrix */
-      }
-    }
-
-    @keyframes logoSpinRotate {
-      100% { transform: rotate(360deg); }
-    }
-
     .nav-logo-img:hover {
-      box-shadow: 0 0 15px var(--gold);
-      animation-play-state: paused; /* Freeze shape parameters cleanly on mouse cursor hover */
+      transform: rotate(360deg);
+      box-shadow: 0 0 12px var(--gold);
     }
 
     .nav-right {
@@ -428,17 +320,9 @@
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 1.4rem;
-      min-height: 1.7em;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
     }
-    
-    .typing-cursor-accent {
-      display: inline-block;
-      width: 2px;
-      background-color: var(--gold);
-      margin-left: 2px;
-      animation: cursorBlinkMani 0.7s infinite;
-    }
-    @keyframes cursorBlinkMani { 50% { opacity: 0; } }
 
     .hero-name {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -509,7 +393,7 @@
     .btn-ghost:hover { 
       border-color: var(--gold-dim); 
       color: var(--gold);
-      background: rgba(201,168,76,0.05);
+      background: rgba(201, 168, 76, 0.05);
       transform: translateY(-2px);
     }
 
@@ -640,7 +524,37 @@
       box-shadow: 0 4px 12px rgba(201,168,76,0.1);
     }
 
-    /* Fixes Layering Overlay Z-Index */
+    /* ── TECH SUIT ASSEMBLING EFFECT ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px) scale(0.96);
+      filter: blur(4px) brightness(0.6);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.8s ease;
+      will-change: transform, opacity, filter;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0px) brightness(1);
+    }
+
+    .skills-grid .skill-chip, 
+    .projects-grid .project-card {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible .skill-chip,
+    .projects-grid .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -787,7 +701,7 @@
     .project-card:hover { 
       border-color: var(--gold-dim); 
       transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06), 0 0 1px rgba(201, 168, 76, 0.2);
+      box-shadow: 0 12px 30px rgba(201, 168, 76, 0.06), 0 0 1px rgba(201, 168, 76, 0.2);
     }
     .project-card:hover::before { opacity: 1; }
 
@@ -867,6 +781,14 @@
     }
 
     .stat-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-box .stat-num {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 2.4rem;
       font-weight: 900;
@@ -1003,7 +925,7 @@
       font-size: 0.9rem;
       color: var(--muted);
       max-width: 450px;
-      margin-width: 1.5rem;
+      margin-bottom: 1.5rem;
       line-height: 1.6;
     }
 
@@ -1041,12 +963,48 @@
       transform: translateY(0);
     }
 
+    /* ── FOOTER ANIMATED REVEAL ── */
     footer {
-      border-top: 1px solid var(--border);
+      border-top: 1px solid transparent; 
       padding: 2rem 4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      width: 0;
+      height: 1px;
+      background: var(--border);
+      transition: width 1s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.5s ease;
+      transform: translateX(-50%);
+    }
+
+    footer.visible::before {
+      width: 100%;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .footer-name, .footer-copy {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    footer.visible .footer-name {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.3s;
+    }
+
+    footer.visible .footer-copy {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.5s;
     }
 
     .footer-name {
@@ -1062,20 +1020,17 @@
       letter-spacing: 0.1em;
     }
 
-    /* ── RESTORED CSS ANIMATIONS FOR THE OBSERVERS ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform, opacity;
-    }
-    
-    /* This rule connects the HTML opacity loop back together perfectly */
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Responsive Mobile Layout Adjustments */
     @media (max-width: 768px) {
       nav { padding: 1.2rem 2rem; }
       
@@ -1118,18 +1073,10 @@
       section { padding: 4rem 2rem; }
       .about-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
-      .story-hud-container { display: none; }
     }
   </style>
 </head>
 <body>
-
-  <div class="top-progress-loader" id="top-loading-line"></div>
-
-  <div class="story-hud-container" id="story-hud-panel">
-    <div class="story-hud-title">System Status // Diagnostics</div>
-    <div class="story-hud-text" id="story-hud-dynamic-text">Initializing portfolio synchronization loops...</div>
-  </div>
 
   <header>
     <nav aria-label="Main Navigation">
@@ -1151,7 +1098,7 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="theme-toggle-btn" id="theme-switcher-element" title="Toggle System Color Scheme" aria-label="Toggle Color Theme Mode">
-          <svg id="theme-icon-sun" class="theme-icon" style="display:none;" viewBox="0 0 20 20"><path d="M10 15a5 5 0 110-10 5 5 0 010 10zm0-1.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0-9a.75.75 0 01-.75-.75V1.5a.75.75 0 011.5 0v2.25A.75.75 0 0110 4.5zm0 11a.75.75 0 01-.75.75v2.25a.75.75 0 011.5 0V16.25a.75.75 0 01-.75-.75zM4.5 10a.75.75 0 01-.75.75H1.5a.75.75 0 010-1.5h2.25A.75.75 0 014.5 10zm14 0a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM6.11 6.11a.75.75 0 010 1.06l-1.59 1.59a.75.75 0 11-1.06-1.06l1.59-1.59a.75.75 0 011.06 0zm11.37 11.38a.75.75 0 010 1.06l-1.59 1.59a.75.75 0 11-1.06-1.06l1.59-1.59a.75.75 0 011.06 0zm-11.37 0a.75.75 0 01-1.06 0l-1.59-1.59a.75.75 0 11-1.06-1.06l1.59 1.59a.75.75 0 010 1.06zm11.37-11.38a.75.75 0 01-1.06 0l-1.59-1.59a.75.75 0 011.06-1.06l1.59 1.59a.75.75 0 010 1.06z"/></svg>
+          <svg id="theme-icon-sun" class="theme-icon" style="display:none;" viewBox="0 0 20 20"><path d="M10 15a5 5 0 110-10 5 5 0 010 10zm0-1.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0-9a.75.75 0 01-.75-.75V1.5a.75.75 0 011.5 0v2.25A.75.75 0 0110 4.5zm0 11a.75.75 0 01-.75.75v2.25a.75.75 0 011.5 0V16.25a.75.75 0 01-.75-.75zM4.5 10a.75.75 0 01-.75.75H1.5a.75.75 0 010-1.5h2.25A.75.75 0 014.5 10zm14 0a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM6.11 6.11a.75.75 0 010 1.06l-1.59 1.59a.75.75 0 11-1.06-1.06l1.59-1.59a.75.75 0 011.06 0zm11.37 11.38a.75.75 0 010 1.06l-1.59 1.59a.75.75 0 11-1.06-1.06l1.59-1.59a.75.75 0 011.06 0zm-11.37 0a.75.75 0 01-1.06 0l-1.59-1.59a.75.75 0 111.06-1.06l1.59 1.59a.75.75 0 010 1.06zm11.37-11.38a.75.75 0 01-1.06 0l-1.59-1.59a.75.75 0 011.06-1.06l1.59 1.59a.75.75 0 010 1.06z"/></svg>
           <svg id="theme-icon-moon" class="theme-icon" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
         </button>
       </div>
@@ -1160,199 +1107,189 @@
 
   <main>
     
-    <div class="liquid-section-container" id="story-node-hero">
-      <section id="hero" aria-label="Introduction">
-        <div class="hero-bg-line" aria-hidden="true"></div>
+    <section id="hero" aria-label="Introduction">
+      <div class="hero-bg-line" aria-hidden="true"></div>
 
-        <div class="hero-text">
-          <p class="hero-tag" id="typing-tagline-container"></p>
-          <h1 class="hero-name">
-            Thangamani<br /><span>Palanivel</span>
-          </h1>
-          <p class="hero-headline-desc">
-            Full Stack Developer creating dynamic digital systems with modern design and security — built to break limits.
-          </p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#projects">View Projects</a>
-            <a class="btn btn-ghost" href="Resume2.pdf" download="Thangamani_Palanivel_Resume.pdf" aria-label="Download Thangamani Palanivel CV PDF">Download CV 📥</a>
+      <div class="hero-text">
+        <p class="hero-tag" id="typing-tagline">// <span id="text-target"></span><span class="terminal-cursor">|</span></p>
+        <h1 class="hero-name">
+          Thangamani<br /><span>Palanivel</span>
+        </h1>
+        <p class="hero-headline-desc">
+          Full Stack Developer creating dynamic digital systems with modern design and security — built to break limits.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-ghost" href="Resume2.pdf" download="Thangamani_Palanivel_Resume.pdf" aria-label="Download Thangamani Palanivel CV PDF">Download CV 📥</a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <div class="photo-frame">
+          <img id="profile-img" src="profile.jpg" alt="Thangamani Palanivel - Full Stack Developer Profile Picture" style="cursor: pointer;" />
+          <div class="photo-badge">⚡ Open to Internships</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-heading">
+      <div class="section-label">// 02 — Toolkit</div>
+      <h2 id="skills-heading" class="section-title reveal">Skills & Technologies</h2>
+      <div class="skills-grid reveal">
+        <div class="skill-chip" role="button" tabindex="0">React</div>
+        <div class="skill-chip" role="button" tabindex="0">JavaScript</div>
+        <div class="skill-chip" role="button" tabindex="0">HTML / CSS</div>
+        <div class="skill-chip" role="button" tabindex="0">UI/UX Design</div>
+        <div class="skill-chip" role="button" tabindex="0">REST APIs</div>
+        <div class="skill-chip" role="button" tabindex="0">Python</div>
+        <div class="skill-chip" role="button" tabindex="0">Java</div>
+        <div class="skill-chip" role="button" tabindex="0">Kotlin</div>
+        <div class="skill-chip" role="button" tabindex="0">Android Dev</div>
+        <div class="skill-chip" role="button" tabindex="0">Cybersecurity</div>
+        <div class="skill-chip" role="button" tabindex="0">Linux / Kali</div>
+        <div class="skill-chip" role="button" tabindex="0">Git / GitHub</div>
+        <div class="skill-chip" role="button" tabindex="0">Tkinter</div>
+        <div class="skill-chip" role="button" tabindex="0">Nmap / Nikto</div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="section-label">// 03 — Work</div>
+      <h2 id="projects-heading" class="section-title reveal">Featured Projects</h2>
+      <div class="projects-grid">
+
+        <article class="project-card reveal">
+          <div class="project-num count-up" data-target="1">00</div>
+          <h3 class="project-title">Portfolio Website</h3>
+          <p class="project-desc">Premium UI developer portfolio with background styling controls, fluid interaction states, and a terminal micro-interface. Built natively with HTML5, advanced CSS grids, and modular JavaScript.</p>
+          <div class="project-tags">
+            <span class="tag">HTML5 / CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Canvas API</span>
+            <span class="tag">UI/UX</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-num count-up" data-target="2">00</div>
+          <h3 class="project-title">PhishGuard – Phishing Awareness App</h3>
+          <p class="project-desc">Interactive security assessment portal teaching end-users how to catch real-world social engineering footprints. Backed by live client-side heuristic pattern scanning loops.</p>
+          <div class="project-tags">
+            <span class="tag">HTML / CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Security Labs</span>
+            <span class="tag">Phishing Detection</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-num count-up" data-target="3">00</div>
+          <h3 class="project-title">Encrypted File Password Cracker</h3>
+          <p class="project-desc">Multithreaded local Python testing tool analyzing file header structures against common cryptographic dictionaries to trace and audit key asset access vectors safely.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Wordlists</span>
+            <span class="tag">Cybersecurity</span>
+            <span class="tag">Decryption</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-num count-up" data-target="4">00</div>
+          <h3 class="project-title">Billing Software – Web-style UI</h3>
+          <p class="project-desc">Lightweight local enterprise invoicing program with instant product inventory filters, dynamic integrated taxation layers, and an automated XLSX export system.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Tkinter GUI</span>
+            <span class="tag">Excel openpyxl</span>
+            <span class="tag">Desktop UI</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal" onclick="window.open('https://star-project-gym.vercel.app/', '_blank')" style="cursor: pointer;" role="link" tabindex="0" aria-label="View Star City Fitness Gym Website project">
+          <div class="project-num count-up" data-target="5">00</div>
+          <h3 class="project-title">Star City Fitness Gym Landing Page</h3>
+          <p class="project-desc">High-converting business landing page structured for a fitness center in Namakkal, Tamil Nadu. Features deep responsiveness, class timeline boards, and modern lead funnels.</p>
+          <div class="project-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS Layouts</span>
+            <span class="tag">Responsive Web Design</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal" id="project-protect-me" style="cursor: pointer;" role="button" tabindex="0" aria-label="Open information modal for PROTECT ME project">
+          <div class="project-num count-up" data-target="6">00</div>
+          <h3 class="project-title">PROTECT ME - Emergency IoT Portal</h3>
+          <p class="project-desc">Smart ecosystem combining multi-sensor IoT concepts with emergency response telemetry dashboards. Built with teammate Vaitheswaran.C.</p>
+          <div class="project-tags">
+            <span class="tag">AI / IoT</span>
+            <span class="tag">React UI</span>
+            <span class="tag">Sensors Fusion</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-heading">
+      <div class="section-label">// 04 — Me</div>
+      <h2 id="about-heading" class="section-title reveal">About Thangamani Palanivel</h2>
+      <div class="about-grid reveal">
+        <div class="about-text">
+          <p>I'm <strong>Thangamani Palanivel</strong> (commonly known as <strong>Star</strong>), an active Full Stack Developer, UI/UX Designer, and Computer Applications (BCA) scholar studying at PGP College of Arts and Science in Namakkal, Tamil Nadu.</p>
+          <p>I specialize in engineering fluid frontends and connecting them with functional, performant backend architectures. My technical passion balances interactive UI programming with defensive development practices, drawing skills from advanced script frameworks, network diagnostic engines, and local platform layouts.</p>
+          <p>I am currently <strong>seeking professional Web Development and Graphic Design Internship tracks</strong>. Whether working remotely or on-site, I bring high-converting responsive interfaces, modular system architecture layouts, and clean user experience implementations.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="stat-num"><span class="count-up" data-target="6">00</span>+</div>
+            <div class="stat-label">Developed Projects</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num"><span class="count-up" data-target="5">00</span>+</div>
+            <div class="stat-label">Core Engineering Languages</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num"><span class="count-up" data-target="2027">0000</span></div>
+            <div class="stat-label">Graduation Year</div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="hero-photo">
-          <div class="photo-frame">
-            <img id="profile-img" src="profile.jpg" alt="Thangamani Palanivel - Full Stack Developer Profile Picture" style="cursor: pointer;" />
-            <div class="photo-badge">⚡ Open to Internships</div>
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="contact-inner">
+        <div class="section-label">// 05 — Reach Out</div>
+        <h2 id="contact-heading" class="section-title reveal">Let's Connect</h2>
+        <p class="contact-sub reveal">Looking for professional corporate internship pathways in front-end design, UI engineering, or application development networks.</p>
+        
+        <div class="contact-hub reveal">
+          <div class="contact-toggles">
+            <button class="contact-toggle-btn active" data-channel="linkedin" title="LinkedIn Profile" aria-label="Thangamani Palanivel LinkedIn Profile Channel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </button>
+            <button class="contact-toggle-btn" data-channel="email" title="Email Address" aria-label="Direct Email Contact Channel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </button>
+            <button class="contact-toggle-btn" data-channel="phone" title="Phone Line" aria-label="Direct Mobile Call or WhatsApp Contact Channel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </button>
+            <button class="contact-toggle-btn" data-channel="github" title="GitHub Code Repositories" aria-label="GitHub Development Profile Source Channel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </button>
+            <button class="contact-toggle-btn" data-channel="instagram" title="Instagram Profile" aria-label="Instagram Communication Channel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </button>
+          </div>
+
+          <div class="contact-display-card">
+            <div class="contact-display-content" id="contact-content">
+              </div>
+            <div class="copy-success-toast" id="copy-toast" role="status">Copied to Clipboard!</div>
           </div>
         </div>
-      </section>
-    </div>
-
-    <div class="liquid-section-container" id="story-node-skills">
-      <section id="skills" aria-labelledby="skills-heading">
-        <div class="section-label">// 02 — Toolkit</div>
-        <h2 id="skills-heading" class="section-title reveal">Skills & Technologies</h2>
-        <div class="skills-grid reveal">
-          <div class="skill-chip" role="button" tabIndex="0">React</div>
-          <div class="skill-chip" role="button" tabIndex="0">JavaScript</div>
-          <div class="skill-chip" role="button" tabIndex="0">HTML / CSS</div>
-          <div class="skill-chip" role="button" tabIndex="0">UI/UX Design</div>
-          <div class="skill-chip" role="button" tabIndex="0">REST APIs</div>
-          <div class="skill-chip" role="button" tabIndex="0">Python</div>
-          <div class="skill-chip" role="button" tabIndex="0">Java</div>
-          <div class="skill-chip" role="button" tabIndex="0">Kotlin</div>
-          <div class="skill-chip" role="button" tabIndex="0">Android Dev</div>
-          <div class="skill-chip" role="button" tabIndex="0">Cybersecurity</div>
-          <div class="skill-chip" role="button" tabIndex="0">Linux / Kali</div>
-          <div class="skill-chip" role="button" tabIndex="0">Git / GitHub</div>
-          <div class="skill-chip" role="button" tabIndex="0">Tkinter</div>
-          <div class="skill-chip" role="button" tabIndex="0">Nmap / Nikto</div>
-        </div>
-      </section>
-    </div>
-
-    <div class="liquid-section-container" id="story-node-projects">
-      <section id="projects" aria-labelledby="projects-heading">
-        <div class="section-label">// 03 — Work</div>
-        <h2 id="projects-heading" class="section-title reveal">Featured Projects</h2>
-        <div class="projects-grid">
-
-          <article class="project-card reveal">
-            <div class="project-num count-up" data-target="1">00</div>
-            <h3 class="project-title">Portfolio Website</h3>
-            <p class="project-desc">Premium UI developer portfolio with background styling controls, fluid interaction states, and a terminal micro-interface. Built natively with HTML5, advanced CSS grids, and modular JavaScript.</p>
-            <div class="project-tags">
-              <span class="tag">HTML5 / CSS3</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">Canvas API</span>
-              <span class="tag">UI/UX</span>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-num count-up" data-target="2">00</div>
-            <h3 class="project-title">PhishGuard – Phishing Awareness App</h3>
-            <p class="project-desc">Interactive security assessment portal teaching end-users how to catch real-world social engineering footprints. Backed by live client-side heuristic pattern scanning loops.</p>
-            <div class="project-tags">
-              <span class="tag">HTML / CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">Security Labs</span>
-              <span class="tag">Phishing Detection</span>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-num count-up" data-target="3">00</div>
-            <h3 class="project-title">Encrypted File Password Cracker</h3>
-            <p class="project-desc">Multithreaded local Python testing tool analyzing file header structures against common cryptographic dictionaries to trace and audit key asset access vectors safely.</p>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">Wordlists</span>
-              <span class="tag">Cybersecurity</span>
-              <span class="tag">Decryption</span>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-num count-up" data-target="4">00</div>
-            <h3 class="project-title">Billing Software – Web-style UI</h3>
-            <p class="project-desc">Lightweight local enterprise invoicing program with instant product inventory filters, dynamic integrated taxation layers, and an automated XLSX export system.</p>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">Tkinter GUI</span>
-              <span class="tag">Excel openpyxl</span>
-              <span class="tag">Desktop UI</span>
-            </div>
-          </article>
-
-          <article class="project-card reveal" onclick="window.open('https://star-project-gym.vercel.app/', '_blank')" style="cursor: pointer;" role="link" tabIndex="0" aria-label="View Star City Fitness Gym Website project">
-            <div class="project-num count-up" data-target="5">00</div>
-            <h3 class="project-title">Star City Fitness Gym Landing Page</h3>
-            <p class="project-desc">High-converting business landing page structured for a fitness center in Namakkal, Tamil Nadu. Features deep responsiveness, class timeline boards, and modern lead funnels.</p>
-            <div class="project-tags">
-              <span class="tag">HTML5</span>
-              <span class="tag">CSS Layouts</span>
-              <span class="tag">Responsive Web Design</span>
-            </div>
-          </article>
-
-          <article class="project-card reveal" id="project-protect-me" style="cursor: pointer;" role="button" tabIndex="0" aria-label="Open information modal for PROTECT ME project">
-            <div class="project-num count-up" data-target="6">00</div>
-            <h3 class="project-title">PROTECT ME - Emergency IoT Portal</h3>
-            <p class="project-desc">Smart ecosystem combining multi-sensor IoT concepts with emergency response telemetry dashboards. Built with teammate Vaitheswaran.C.</p>
-            <div class="project-tags">
-              <span class="tag">AI / IoT</span>
-              <span class="tag">React UI</span>
-              <span class="tag">Sensors Fusion</span>
-            </div>
-          </article>
-
-        </div>
-      </section>
-    </div>
-
-    <div class="liquid-section-container" id="story-node-about">
-      <section id="about" aria-labelledby="about-heading">
-        <div class="section-label">// 04 — Me</div>
-        <h2 id="about-heading" class="section-title reveal">About Thangamani Palanivel</h2>
-        <div class="about-grid reveal">
-          <div class="about-text">
-            <p>I'm <strong>Thangamani Palanivel</strong> (commonly known as <strong>Star</strong>), an active Full Stack Developer, UI/UX Designer, and Computer Applications (BCA) scholar studying at PGP College of Arts and Science in Namakkal, Tamil Nadu.</p>
-            <p>I specialize in engineering fluid frontends and connecting them with functional, performant backend architectures. My technical passion balances interactive UI programming with defensive development practices, drawing skills from advanced script frameworks, network diagnostic engines, and local platform layouts.</p>
-            <p>I am currently <strong>seeking professional Web Development and Graphic Design Internship tracks</strong>. Whether working remotely or on-site, I bring high-converting responsive interfaces, modular system architecture layouts, and clean user experience implementations.</p>
-          </div>
-          <div class="about-stats">
-            <div class="stat-box">
-              <div class="stat-num"><span class="count-up" data-target="6">00</span>+</div>
-              <div class="stat-label">Developed Projects</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-num"><span class="count-up" data-target="5">00</span>+</div>
-              <div class="stat-label">Core Engineering Languages</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-num"><span class="count-up" data-target="2027">0000</span></div>
-              <div class="stat-label">Graduation Year</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <div class="liquid-section-container" id="story-node-contact">
-      <section id="contact" aria-labelledby="contact-heading">
-        <div class="contact-inner">
-          <div class="section-label">// 05 — Reach Out</div>
-          <h2 id="contact-heading" class="section-title reveal">Let's Connect</h2>
-          <p class="contact-sub reveal">Looking for professional corporate internship pathways in front-end design, UI engineering, or application development networks.</p>
-          
-          <div class="contact-hub reveal">
-            <div class="contact-toggles">
-              <button class="contact-toggle-btn active" data-channel="linkedin" title="LinkedIn Profile" aria-label="Thangamani Palanivel LinkedIn Profile Channel">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-              </button>
-              <button class="contact-toggle-btn" data-channel="email" title="Email Address" aria-label="Direct Email Contact Channel">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              </button>
-              <button class="contact-toggle-btn" data-channel="phone" title="Phone Line" aria-label="Direct Mobile Call or WhatsApp Contact Channel">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              </button>
-              <button class="contact-toggle-btn" data-channel="github" title="GitHub Code Repositories" aria-label="GitHub Development Profile Source Channel">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-              </button>
-              <button class="contact-toggle-btn" data-channel="instagram" title="Instagram Profile" aria-label="Instagram Communication Channel">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-              </button>
-            </div>
-
-            <div class="contact-display-card">
-              <div class="contact-display-content" id="contact-content">
-                </div>
-              <div class="copy-success-toast" id="copy-toast" role="status">Copied to Clipboard!</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
   </main>
 
@@ -1408,75 +1345,12 @@
     </div>
   </div>
 
-  <footer>
+  <footer class="reveal">
     <span class="footer-name">Thangamani Palanivel</span>
     <span class="footer-copy">built by star · namakkal, tn · © 2026 · all rights reserved</span>
   </footer>
 
   <script>
-    // ── INVISIBLE GOLD SHOCKWAVE RIPPLE LOGIC ENGINE ──
-    window.addEventListener('click', (e) => {
-      const ripple = document.createElement('div');
-      ripple.className = 'shockwave-ripple';
-      ripple.style.left = `${e.clientX}px`;
-      ripple.style.top = `${e.clientY}px`;
-      document.body.appendChild(ripple);
-      setTimeout(() => { ripple.remove(); }, 750);
-    });
-
-    // ── CHARACTER REVEAL STORYBOARD SCROLL LISTENER ──
-    const storyTextHUD = document.getElementById('story-hud-dynamic-text');
-    const storyNodes = [
-      { id: 'story-node-hero', text: "Phase 1 // Baseline Profile Engaged. Full Stack identity parameters locked." },
-      { id: 'story-node-skills', text: "Phase 2 // Assembling Toolkit. React lattices and defensive Python cores online." },
-      { id: 'story-node-projects', text: "Phase 3 // Fanning Out Weaponry. Verified real-world tool deployments verified." },
-      { id: 'story-node-about', text: "Phase 4 // Checking Scholar Network. BCA framework calibrated. Class of 2027." },
-      { id: 'story-node-contact', text: "Phase 5 // Communications Grid Open. Secure lines ready for placement." }
-    ];
-
-    window.addEventListener('scroll', () => {
-      let activeText = "Calibrating systems navigation tracking vectors...";
-      storyNodes.forEach(node => {
-        const el = document.getElementById(node.id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-            activeText = node.text;
-          }
-        }
-      });
-      if (storyTextHUD) storyTextHUD.textContent = activeText;
-    });
-
-    // ── PAGE LOAD PROGRESS BAR LOGIC ──
-    window.addEventListener('DOMContentLoaded', () => {
-      const loaderLine = document.getElementById('top-loading-line');
-      if (loaderLine) loaderLine.style.width = '40%';
-    });
-    window.addEventListener('load', () => {
-      const loaderLine = document.getElementById('top-loading-line');
-      if (loaderLine) {
-        loaderLine.style.width = '100%';
-        setTimeout(() => { loaderLine.style.opacity = '0'; }, 400);
-      }
-    });
-
-    // ── TAGLINE TYPING ENGINE LOGIC ──
-    const taglineString = "// BCA Final Year Student";
-    const typingContainer = document.getElementById('typing-tagline-container');
-    let charIndex = 0;
-
-    function executeTaglineTypingLoop() {
-      if (charIndex < taglineString.length) {
-        typingContainer.innerHTML = taglineString.substring(0, charIndex + 1) + '<span class="typing-cursor-accent"></span>';
-        charIndex++;
-        setTimeout(executeTaglineTypingLoop, 75);
-      } else {
-        typingContainer.innerHTML = taglineString + '<span class="typing-cursor-accent"></span>';
-      }
-    }
-    setTimeout(executeTaglineTypingLoop, 600);
-
     // Close Mobile Navigation Sidebar upon clicking Link anchor targets
     const sidebarCheckbox = document.getElementById('menu-toggle-checkbox');
     const inlineAnchors = document.querySelectorAll('.nav-links a');
@@ -1525,28 +1399,57 @@
       }
     });
 
-    // Scroll reveal system + Liquid Pour-In Section Activation Observer
-    const reveals = document.querySelectorAll('.reveal');
-    const liquidContainers = document.querySelectorAll('.liquid-section-container');
+    // ── GOLD SHOCKWAVE RIPPLE LOGIC ──
+    window.addEventListener('click', (e) => {
+      const ripple = document.createElement('span');
+      ripple.className = 'click-ripple';
+      ripple.style.left = `${e.clientX}px`;
+      ripple.style.top = `${e.clientY}px`;
+      document.body.appendChild(ripple);
+      ripple.addEventListener('animationend', () => {
+        ripple.remove();
+      });
+    });
 
-    const layoutRevealObserver = new IntersectionObserver(entries => {
-      entries.forEach((entry, i) => {
+    // ── DYNAMIC TAGLINE TYPING LOGIC ──
+    const runTaglineTypingEffect = () => {
+      const targetElement = document.getElementById('text-target');
+      const fullText = "BCA Final Year Student";
+      let index = 0;
+
+      function typeCharacter() {
+        if (index < fullText.length) {
+          targetElement.textContent += fullText.charAt(index);
+          index++;
+          setTimeout(typeCharacter, 60 + Math.random() * 40);
+        }
+      }
+      setTimeout(typeCharacter, 600);
+    };
+    document.addEventListener('DOMContentLoaded', runTaglineTypingEffect);
+
+    // ── UPGRADED COMPONENT ASSEMBLY OBSERVER ENGINE ──
+    const reveals = document.querySelectorAll('.reveal, .project-card');
+
+    const customAssemblyObserver = new IntersectionObserver(entries => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          entry.target.classList.add('visible');
+          
+          if (entry.target.classList.contains('skills-grid')) {
+            const chips = entry.target.querySelectorAll('.skill-chip');
+            chips.forEach((chip, index) => {
+              setTimeout(() => {
+                chip.style.opacity = '1';
+                chip.style.transform = 'translateY(0)';
+              }, index * 45); 
+            });
+          }
         }
       });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => layoutRevealObserver.observe(el));
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
 
-    const liquidPourObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('liquid-filled');
-          liquidPourObserver.unobserve(entry.target); 
-        }
-      });
-    }, { threshold: 0.08 });
-    liquidContainers.forEach(container => liquidPourObserver.observe(container));
+    reveals.forEach(el => customAssemblyObserver.observe(el));
 
     // Navigation highlight trigger
     const sections = document.querySelectorAll('section[id]');
@@ -1719,11 +1622,11 @@
       });
     }
 
-    // Unified Scroll Progression Counter Observer Engine
+    // Unified Scroll Progression Counter Observer
     const counters = document.querySelectorAll('.count-up');
-    const targetsToObserve = document.querySelectorAll('#about, .project-card');
+    const elementsToObserve = document.querySelectorAll('#about, .project-card');
 
-    if (counters.length > 0 && targetsToObserve.length > 0) {
+    if (counters.length > 0 && elementsToObserve.length > 0) {
       const countUpObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1754,7 +1657,7 @@
         });
       }, { threshold: 0.1 });
 
-      targetsToObserve.forEach(el => countUpObserver.observe(el));
+      elementsToObserve.forEach(el => countUpObserver.observe(el));
     }
   </script>
 </body>
