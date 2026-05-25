@@ -57,12 +57,12 @@
   </script>
 
   <style>
-    /* ── DUAL VARIABLE SYSTEM ── */
+    /* ── DUAL VARIABLE SYSTEM WITH CONTRAST CORRECTIONS ── */
     :root {
       /* Dark Theme Root Setup (Default) */
       --bg: #0e0c0a;
       --surface: #161310;
-      --card: #1c1915;
+      --card: rgba(28, 25, 21, 0.65);
       --gold: #c9a84c;
       --gold-light: #e8c97a;
       --gold-dim: #7a6430;
@@ -74,17 +74,17 @@
     }
 
     [data-theme="light"] {
-      /* Light Theme Overrides */
+      /* Light Theme Contrast Corrected Parameters */
       --bg: #fdfcfb;
       --surface: #f5f2ee;
-      --card: #eae5df;
-      --gold: #aa842c;
-      --gold-light: #c9a84c;
-      --gold-dim: #614a14;
-      --text: #1c1915;
-      --muted: #6e6455;
+      --card: rgba(234, 229, 223, 0.85); /* Solidified card opacity */
+      --gold: #8a651a; /* Darker tone for clean light context text readability */
+      --gold-light: #aa842c;
+      --gold-dim: #aa842c; /* Boosted visibility boundary for layout elements */
+      --text: #161310;
+      --muted: #5c5346; /* Deepened text contrast to prevent washing out */
       --accent: #c44321;
-      --border: rgba(170,132,44,0.2);
+      --border: rgba(138, 101, 26, 0.25);
       --toggle-bg: #eae5df;
     }
 
@@ -101,7 +101,6 @@
       font-weight: 300;
       line-height: 1.7;
       overflow-x: hidden;
-      transition: color 0.4s ease;
     }
 
     /* Light Theme Adaptive Background Filter adjustment */
@@ -142,24 +141,22 @@
     .nav-brand-container {
       display: flex;
       align-items: center;
-      gap: 1rem;
     }
 
+    /* Premium Rotation Interactivity Styles for Favicon Logo Graphic */
     .nav-logo-img {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       object-fit: contain;
-      border-radius: 4px;
+      border-radius: 6px;
       border: 1px solid var(--border);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      cursor: pointer;
     }
-
-    .nav-logo {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.2rem;
-      color: var(--gold);
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      font-weight: 700;
+    
+    .nav-logo-img:hover {
+      transform: rotate(360deg);
+      box-shadow: 0 0 12px var(--gold);
     }
 
     .nav-right {
@@ -208,7 +205,7 @@
       justify-content: center;
       width: 36px;
       height: 36px;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
     .theme-toggle-btn:hover {
       transform: scale(1.05);
@@ -388,7 +385,7 @@
     .photo-badge {
       position: absolute;
       bottom: -32px; left: -20px;
-      background: var(--card);
+      background: var(--toggle-bg);
       border: 1px solid var(--border);
       padding: 0.6rem 1.2rem;
       font-family: 'JetBrains Mono', monospace;
@@ -435,7 +432,7 @@
 
     .skill-chip {
       padding: 0.85rem 1.2rem;
-      background: var(--card);
+      background: var(--toggle-bg);
       border: 1px solid var(--border);
       border-radius: 2px;
       font-family: 'JetBrains Mono', monospace;
@@ -474,7 +471,7 @@
       pointer-events: all;
     }
     .modal-card {
-      background: var(--card);
+      background: var(--toggle-bg);
       border: 1px solid var(--gold);
       border-radius: 6px;
       width: 92%;
@@ -495,7 +492,7 @@
       position: absolute;
       top: 1rem;
       right: 1rem;
-      background: rgba(22, 19, 16, 0.85);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 50%;
       color: var(--muted);
@@ -581,7 +578,7 @@
     }
 
     .project-card {
-      background: rgba(28, 25, 21, 0.65);
+      background: var(--card);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--border);
@@ -649,8 +646,9 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.68rem;
       letter-spacing: 0.08em;
-      color: var(--gold-dim);
-      border: 1px solid var(--gold-dim);
+      color: var(--gold); /* Switched target variables to prevent washed look */
+      border: 1px solid var(--border);
+      background: rgba(201,168,76,0.05);
       padding: 0.2rem 0.6rem;
       border-radius: 2px;
     }
@@ -772,7 +770,7 @@
 
     /* Display Card */
     .contact-display-card {
-      background: rgba(28, 25, 21, 0.75);
+      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 2.2rem;
@@ -884,7 +882,7 @@
 
     .footer-copy {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.70rem;
       color: var(--muted);
       letter-spacing: 0.1em;
     }
@@ -934,8 +932,7 @@
   <header>
     <nav aria-label="Main Navigation">
       <div class="nav-brand-container">
-        <img class="nav-logo-img" src="favicon.png" alt="Star Logo Badge" aria-hidden="true" />
-        <a href="#hero" class="nav-logo" aria-label="Thangamani Palanivel Home Portfolio">Star</a>
+        <img class="nav-logo-img" src="favicon.png" alt="Star Portfolio Brand Home" />
       </div>
       <div class="nav-right">
         <ul class="nav-links">
